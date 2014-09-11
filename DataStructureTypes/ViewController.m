@@ -142,16 +142,6 @@
         }
     };
     
-    /************************************ SEL ************************************/
-    
-    ^{
-        SEL someMethod = @selector(sayHello);
-        
-        [self performSelector:someMethod];
-        
-        BOOL canCall = [self respondsToSelector:someMethod];
-    };
-    
     /************************************ NSInteger ************************************/
     
     /************************************ NSNumber ************************************/
@@ -1252,12 +1242,42 @@
         
         NSTimeZone *preferredTimeZone = [NSTimeZone localTimeZone];
     };
+    
+    /************************************ SEL ************************************/
+    
+    ^{
+        SEL someMethod = @selector(sayHello);
+        
+        [self performSelector:someMethod];
+        
+        BOOL canCall = [self respondsToSelector:someMethod];
+        
+        // target action sending different params
+        UITextField *myTextField;
+        [myTextField addTarget:self action:@selector(textFieldChanged) forControlEvents:UIControlEventEditingChanged];
+        [myTextField addTarget:self action:@selector(textFieldChanged:) forControlEvents:UIControlEventEditingChanged];
+        [myTextField addTarget:self action:@selector(textFieldChanged:event:) forControlEvents:UIControlEventEditingChanged];
+        
+    };
 
 }
 
+#pragma mark : selectors
 
+- (void) textFieldChanged
+{
+    NSLog(@"onField");
+}
 
-#pragma mark : helpers
+- (void) textFieldChanged:(id) sender
+{
+    NSLog(@"onField: %@", sender);
+}
+
+- (void) textFieldChanged:(id) sender event:(id)event
+{
+    NSLog(@"onField: %@\n%@", sender, event);
+}
 
 - (void)sayHello
 {

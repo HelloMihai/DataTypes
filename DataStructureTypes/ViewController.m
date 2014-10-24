@@ -833,6 +833,7 @@
     /************************************ NSMutableArray ************************************/
     
     ^{ // creating
+        NSMutableArray *newList = [NSMutableArray new];
         NSMutableArray *brokenCars = [NSMutableArray arrayWithObjects:
                                       @"Audi A6", @"BMW Z3",
                                       @"Audi Quattro", @"Audi TT", nil];

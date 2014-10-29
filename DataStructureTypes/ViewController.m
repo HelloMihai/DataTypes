@@ -834,15 +834,12 @@
     
     ^{ // creating
         NSMutableArray *newList = [NSMutableArray new];
-        NSMutableArray *brokenCars = [NSMutableArray arrayWithObjects:
-                                      @"Audi A6", @"BMW Z3",
-                                      @"Audi Quattro", @"Audi TT", nil];
+        NSMutableArray *brokenCars = [NSMutableArray arrayWithObjects: @"Audi A6", @"BMW Z3", nil];
+        NSMutableArray *newListA = [@[@"infiniti", @"g37s"] mutableCopy];
     };
     
     ^{ // adding removing
-        NSMutableArray *brokenCars = [NSMutableArray arrayWithObjects:
-                                      @"Audi A6", @"BMW Z3",
-                                      @"Audi Quattro", @"Audi TT", nil];
+        NSMutableArray *brokenCars = [NSMutableArray arrayWithObjects: @"Audi A6", @"BMW Z3", nil];
         [brokenCars addObject:@"BMW F25"];
         NSLog(@"%@", brokenCars);       // BMW F25 added to end
         [brokenCars removeLastObject];

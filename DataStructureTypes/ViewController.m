@@ -944,6 +944,14 @@
                                [NSNumber numberWithInt:0]];
         NSLog(@"The following cars are currently out of stock: %@",
               [outOfStock componentsJoinedByString:@", "]);
+              
+        // join dictionary with deliminators
+        NSMutableString *resultString = [NSMutableString string];
+        for (NSString* key in [inventory allKeys]){
+            if ([resultString length]>0)
+                [resultString appendString:@"&"];
+            [resultString appendFormat:@"%@=%@", key, [inventory objectForKey:key]];
+        }
     };
     
     ^{ // enumerating
